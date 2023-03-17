@@ -13,5 +13,8 @@
     "order_order": "Order order",
     "order_order_subtitle": "Edit order order",
     "product_to_product": "Product to product",
-    "product_to_product_subtitle": "Add product to product"
+    "product_to_product_subtitle": "Add product to product",
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System"
 }

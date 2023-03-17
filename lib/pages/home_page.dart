@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:prolift/components/HomeCard.dart';
+
+import '../bloc/theme/theme_cubit.dart';
+import '../bloc/theme/theme_state.dart';
+import '../components/home_card.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -23,7 +27,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text(AppLocalizations.of(context)!.home),
+        title: Text(S.of(context)!.home),
         actions: [
           IconButton(
             onPressed: () {},
@@ -38,13 +42,32 @@ class _HomePageState extends State<HomePage> {
             vertical: 50,
           ),
           children: [
-            ListTile(
-              leading: const Icon(Icons.settings),
-              title: Text(AppLocalizations.of(context)!.settings),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-              },
+            BlocBuilder<ThemeCubit, ThemeState>(
+              builder: (context, state) => ListTile(
+                leading: Icon(
+                  state.themeMode == ThemeMode.dark
+                      ? Icons.dark_mode_outlined
+                      : state.themeMode == ThemeMode.light
+                          ? Icons.light_mode_outlined
+                          : Icons.phone_android_outlined,
+                ),
+                title: Text(
+                  state.themeMode == ThemeMode.dark
+                      ? S.of(context)!.dark
+                      : state.themeMode == ThemeMode.light
+                          ? S.of(context)!.light
+                          : S.of(context)!.system,
+                ),
+                onTap: () => context.read<ThemeCubit>().changeThemeMode(
+                      state.copyWith(
+                        changeState: state.themeMode == ThemeMode.dark
+                            ? ThemeMode.light
+                            : state.themeMode == ThemeMode.light
+                                ? ThemeMode.system
+                                : ThemeMode.dark,
+                      ),
+                    ),
+              ),
             ),
           ],
         ),
@@ -54,38 +77,36 @@ class _HomePageState extends State<HomePage> {
           ListView(
             children: [
               HomeCard(
-                title: AppLocalizations.of(context)!.inventory,
-                subTitle: AppLocalizations.of(context)!.inventory_subtitle,
+                title: S.of(context)!.inventory,
+                subTitle: S.of(context)!.inventory_subtitle,
                 icon: Icons.inventory_2_outlined,
                 onTap: () {},
               ),
               const SizedBox(width: 8),
               HomeCard(
-                title: AppLocalizations.of(context)!.warehouse_to_warehouse,
-                subTitle: AppLocalizations.of(context)!
-                    .warehouse_to_warehouse_subtitle,
+                title: S.of(context)!.warehouse_to_warehouse,
+                subTitle: S.of(context)!.warehouse_to_warehouse_subtitle,
                 icon: Icons.compare_arrows_outlined,
                 onTap: () {},
               ),
               const SizedBox(width: 8),
               HomeCard(
-                title: AppLocalizations.of(context)!.order_note,
-                subTitle: AppLocalizations.of(context)!.order_note_subtitle,
+                title: S.of(context)!.order_note,
+                subTitle: S.of(context)!.order_note_subtitle,
                 icon: Icons.speaker_notes_off_outlined,
                 onTap: () {},
               ),
               const SizedBox(width: 8),
               HomeCard(
-                title: AppLocalizations.of(context)!.order_order,
-                subTitle: AppLocalizations.of(context)!.order_order_subtitle,
+                title: S.of(context)!.order_order,
+                subTitle: S.of(context)!.order_order_subtitle,
                 icon: Icons.receipt_long,
                 onTap: () {},
               ),
               const SizedBox(width: 8),
               HomeCard(
-                title: AppLocalizations.of(context)!.product_to_product,
-                subTitle:
-                    AppLocalizations.of(context)!.product_to_product_subtitle,
+                title: S.of(context)!.product_to_product,
+                subTitle: S.of(context)!.product_to_product_subtitle,
                 icon: Icons.playlist_add,
                 onTap: () {},
               ),
@@ -93,28 +114,20 @@ class _HomePageState extends State<HomePage> {
             ],
           )
         ].elementAt(_selectedIndex),
-        // child: PageView(
-        //   physics: const NeverScrollableScrollPhysics(),
-        //   children: [
-        //     Container(
-        //       color: Colors.red,
-        //     ),
-        //   ],
-        // ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: const Icon(Icons.home_outlined),
-            label: AppLocalizations.of(context)!.home,
+            label: S.of(context)!.home,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.qr_code_scanner_rounded),
-            label: AppLocalizations.of(context)!.scan,
+            label: S.of(context)!.scan,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.shopping_basket_outlined),
-            label: AppLocalizations.of(context)!.basket,
+            label: S.of(context)!.basket,
           ),
         ],
         currentIndex: _selectedIndex,

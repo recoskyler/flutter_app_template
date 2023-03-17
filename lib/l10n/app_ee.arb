@@ -4,7 +4,7 @@
     "scan": "Scan",
     "basket": "Basket",
     "settings": "Settings",
-    "inventory": "Inventory",
+    "inventory": "Inventuur",
     "inventory_subtitle": "Add product to inventory",
     "warehouse_to_warehouse": "Warehouse to warehouse",
     "warehouse_to_warehouse_subtitle": "Transfer product from warehouse to warehouse",
@@ -13,5 +13,8 @@
     "order_order": "Order order",
     "order_order_subtitle": "Edit order order",
     "product_to_product": "Product to product",
-    "product_to_product_subtitle": "Add product to product"
+    "product_to_product_subtitle": "Add product to product",
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System"
 }

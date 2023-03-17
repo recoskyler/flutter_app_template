@@ -20,5 +20,8 @@
         ".fvm": true,
         ".vscode": true
     },
-    "explorerExclude.backup": {}
+    "explorerExclude.backup": {},
+    "cSpell.words": [
+        "prefs"
+    ]
 }

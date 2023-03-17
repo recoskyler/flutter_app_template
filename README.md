@@ -1,4 +1,4 @@
-# Prolift Warehouse App
+# flutter_app_template Warehouse App
 
 ## Requirements
 
@@ -11,7 +11,7 @@
 1. Clone the project:
 
     ```bash
-    $ git clone https://github.com/ardobirk/prolift.git
+    $ git clone https://github.com/ardobirk/flutter_app_template.git
     ```
 
 2. Generate the translations:
