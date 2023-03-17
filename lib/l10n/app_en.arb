@@ -1,0 +1,17 @@
+{
+    "title": "Warehouse",
+    "home": "Home",
+    "scan": "Scan",
+    "basket": "Basket",
+    "settings": "Settings",
+    "inventory": "Inventory",
+    "inventory_subtitle": "Add product to inventory",
+    "warehouse_to_warehouse": "Warehouse to warehouse",
+    "warehouse_to_warehouse_subtitle": "Transfer product from warehouse to warehouse",
+    "order_note": "Order note",
+    "order_note_subtitle": "Edit order note",
+    "order_order": "Order order",
+    "order_order_subtitle": "Edit order order",
+    "product_to_product": "Product to product",
+    "product_to_product_subtitle": "Add product to product"
+}
