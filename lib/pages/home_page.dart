@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../bloc/theme/theme_cubit.dart';
-import '../bloc/theme/theme_state.dart';
+import '../bloc/app_config/app_config_cubit.dart';
+import '../bloc/app_config/app_config_state.dart';
 import '../components/home_card.dart';
 
 class HomePage extends StatefulWidget {
@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
             vertical: 50,
           ),
           children: [
-            BlocBuilder<ThemeCubit, ThemeState>(
+            BlocBuilder<AppConfigCubit, AppConfigState>(
               builder: (context, state) => ListTile(
                 leading: Icon(
                   state.themeMode == ThemeMode.dark
@@ -58,9 +58,9 @@ class _HomePageState extends State<HomePage> {
                           ? S.of(context)!.light
                           : S.of(context)!.system,
                 ),
-                onTap: () => context.read<ThemeCubit>().changeThemeMode(
+                onTap: () => context.read<AppConfigCubit>().changeThemeMode(
                       state.copyWith(
-                        changeState: state.themeMode == ThemeMode.dark
+                        themeMode: state.themeMode == ThemeMode.dark
                             ? ThemeMode.light
                             : state.themeMode == ThemeMode.light
                                 ? ThemeMode.system
